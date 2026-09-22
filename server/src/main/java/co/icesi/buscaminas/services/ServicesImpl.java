@@ -11,10 +11,14 @@ public class ServicesImpl{
     }
 
     public BoardGame getGame() {
+
         return game;
+
     }
     public int initGame(int n, int m, int mines) {
+
         return game.initGame(n, m, mines);
+
     }
     
     public boolean selectCell(int i, int j) {
