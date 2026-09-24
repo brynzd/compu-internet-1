@@ -12,10 +12,9 @@ public class Main {
     {
         ServicesImpl serv = new ServicesImpl();
         new Thread(() -> apply(serv.getGame())).start();
-        // TCPController controller = new TCPController(serv);
-        // controller.startService();
 
-        TCPController iceController = new TCPController(serv);
+        int port = args.length > 0 ? Integer.parseInt(args[0]) : 12345;
+        TCPController iceController = new TCPController(serv, port);
         iceController.startService();
     }
     public static void apply(BoardGame bg) {

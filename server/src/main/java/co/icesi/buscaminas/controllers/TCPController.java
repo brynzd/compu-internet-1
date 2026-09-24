@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.HashMap;
@@ -38,7 +39,7 @@ public class TCPController {
     public TCPController(ServicesImpl services, int port) {
         this.services = services;
         try {
-            serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(port, 50, InetAddress.getByName("0.0.0.0"));
             executor = Executors.newFixedThreadPool(5);
             gson = new GsonBuilder().create();
         } catch (Exception e) {
