@@ -3,13 +3,10 @@
 **Computación en Internet I (09810 - TIC)** · Período 2026-2 · NRC 12378 / Grupo 001
 Semana 08 / Sesión 16 — Sockets TCP, Serialización JSON y ThreadPools
 
-| | |
-|---|---|
-| **Estudiante 1** | Bryan Díaz |
-| **Código** | ______________ |
-| **Estudiante 2** | ______________ |
-| **Código** | ______________ |
-| **Fecha** | 24 de septiembre de 2026 |
+| |                                 |
+|---|---------------------------------|
+| **Estudiante 1** | Bryan Díaz                      |
+| **Código** | A00411879                       |
 | **Política IAG** | Nivel 3 — Colaboración Asistida |
 
 ---
