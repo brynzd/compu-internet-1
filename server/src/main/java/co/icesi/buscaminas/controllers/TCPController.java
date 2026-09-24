@@ -85,12 +85,14 @@ public class TCPController {
         @Override
         public void run() {
             try {
-                System.out.println("Client connected: " + clientSocket.getInetAddress());
+                String worker = Thread.currentThread().getName();
+                System.out.println("[" + worker + "] Client connected: " + clientSocket.getInetAddress());
                 BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
                 BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(clientSocket.getOutputStream()));
 
                 String line = reader.readLine();
                 Request rq = gson.fromJson(line, Request.class);
+                System.out.println("[" + worker + "] action=" + rq.action + " data=" + rq.data);
                 Map<String, String> data = rq.data;
                 Response response = new Response();
                 response.data = new HashMap<>();
@@ -165,7 +167,7 @@ public class TCPController {
                 reader.close();
 
                 clientSocket.close();
-                System.out.println("Client disconnected: " + clientSocket.getInetAddress());
+                System.out.println("[" + worker + "] Client disconnected: " + clientSocket.getInetAddress());
             } catch (Exception e) {
                 e.printStackTrace();
             }
