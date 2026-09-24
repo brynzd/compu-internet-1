@@ -112,6 +112,19 @@ public class TCPController {
                         Cell[][] board = services.printBoard();
                         response.data.put("board", board);
                         break;
+                    case "MARK_CELL";
+                        int mi = Integer.paseInt(data.get("i"));
+                        int mj = Integer.parseInt(data.get("j"));
+                        try {
+                            services.markCell(mi,mj);
+                            response.status = "OK";
+                        } catch (Exception e){
+                            response.status = "ERROR";
+                            response.data.put("message", e.getMessage());
+                        }
+                        board = services.printBoard();
+                        response.data.put("board",board);
+                        break;
                     case "SOW_ALL":
                         services.showAll(true);
                         board = services.printBoard();
