@@ -8,11 +8,11 @@ public class BoardGame {
 
     private int mines;
 
-    public int getMines() {
+    public synchronized int getMines() {
         return mines;
     }
 
-    public int initGame(int n, int m, int mines){
+    public synchronized int initGame(int n, int m, int mines){
         this.mines = mines;
         board = new Cell[n][m];
         Random rd = new Random();
@@ -78,7 +78,7 @@ public class BoardGame {
             System.out.println(" ]");
         }
     }
-    public boolean selectCell(int i, int j){
+    public synchronized boolean selectCell(int i, int j){
         if(i<0 || i>= board.length || j<0 || j >= board[0].length ){
             throw new RuntimeException("Cell no valid");
         }
@@ -125,11 +125,11 @@ public class BoardGame {
         }
     }
 
-    public Cell[][] getBoard() {
+    public synchronized Cell[][] getBoard() {
         return board;
     }
 
-    public void markCell(int i, int j) {
+    public synchronized void markCell(int i, int j) {
         if(i<0 || i>= board.length || j<0 || j >= board[0].length ){
             throw new RuntimeException("Cell no valid");
         }
