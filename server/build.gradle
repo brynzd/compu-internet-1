@@ -1,0 +1,11 @@
+plugins {
+    id 'application'
+}
+
+application {
+    mainClass = 'co.icesi.buscaminas.Main'
+}
+
+tasks.named('run') {
+    standardInput = System.in
+}
