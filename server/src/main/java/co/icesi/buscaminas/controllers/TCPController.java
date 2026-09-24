@@ -105,15 +105,17 @@ public class TCPController {
 
                             response.data.put("gameEnd", resp);
                         } catch (Exception e) {
-                            response.data.put("gameEnd", true);
+                            boolean gameOver = "Game over".equals(e.getMessage());
+                            response.status = gameOver ? "OK" : "ERROR";
+                            response.data.put("gameEnd", gameOver);
                             response.data.put("win", false);
-
+                            response.data.put("message", e.getMessage());
                         }
                         Cell[][] board = services.printBoard();
                         response.data.put("board", board);
                         break;
-                    case "MARK_CELL";
-                        int mi = Integer.paseInt(data.get("i"));
+                    case "MARK_CELL":
+                        int mi = Integer.parseInt(data.get("i"));
                         int mj = Integer.parseInt(data.get("j"));
                         try {
                             services.markCell(mi,mj);
@@ -140,9 +142,14 @@ public class TCPController {
                         i = Integer.parseInt(data.get("n"));
                         j = Integer.parseInt(data.get("m"));
                         int m = Integer.parseInt(data.get("minas"));
-                        services.initGame(i, j, m);
+                        try {
+                            services.initGame(i, j, m);
+                            response.status = "OK";
+                        } catch (Exception e) {
+                            response.status = "ERROR";
+                            response.data.put("message", e.getMessage());
+                        }
                         board = services.printBoard();
-                        response.status = "OK";
                         response.data.put("board", board);
                         break;
 

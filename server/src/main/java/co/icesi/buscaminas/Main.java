@@ -11,7 +11,9 @@ public class Main {
     public static void main(String[] args)
     {
         ServicesImpl serv = new ServicesImpl();
-        new Thread(() -> apply(serv.getGame())).start();
+        if (args.length > 1 && "--console".equals(args[1])) {
+            new Thread(() -> apply(serv.getGame())).start();
+        }
 
         int port = args.length > 0 ? Integer.parseInt(args[0]) : 12345;
         TCPController iceController = new TCPController(serv, port);

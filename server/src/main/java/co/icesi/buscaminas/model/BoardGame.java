@@ -13,6 +13,9 @@ public class BoardGame {
     }
 
     public synchronized int initGame(int n, int m, int mines){
+        if (n <= 0 || m <= 0 || mines < 0 || mines > n * m) {
+            throw new RuntimeException("Board parameters no valid");
+        }
         this.mines = mines;
         board = new Cell[n][m];
         Random rd = new Random();
