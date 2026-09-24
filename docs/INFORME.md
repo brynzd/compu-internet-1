@@ -466,7 +466,3 @@ las peticiones de distintos clientes se intercalan y que ningún cliente bloquea
 > final, ese volcado aparece mezclado con las líneas de bitácora cuando varios hilos escriben a la
 > vez. Las líneas anteriores se muestran filtradas para facilitar la lectura.
 
-## Anexo B — Capturas de pantalla
-
-*(Insertar aquí las capturas solicitadas por la guía: servidor en ejecución, cliente jugando una
-partida completa y dos terminales de cliente concurrentes contra el mismo servidor.)*
